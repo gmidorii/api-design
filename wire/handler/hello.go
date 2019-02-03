@@ -1,8 +1,10 @@
 package handler
 
 import (
-	"github.com/gmidorii/api-design/wire/provider"
+	"io"
 	"net/http"
+
+	"github.com/gmidorii/api-design/wire/provider"
 )
 
 func Hello(w http.ResponseWriter, r *http.Request) {
@@ -10,5 +12,10 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-	fmt.Println(hello)
+	message, err := hello.GetMessage("id")
+	if err != nil {
+		return
+	}
+
+	io.WriteString(w, message)
 }

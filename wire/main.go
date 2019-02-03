@@ -11,6 +11,7 @@ import (
 
 func run(port string) error {
 	http.HandleFunc("/ping", handler.Ping)
+	http.HandleFunc("/hello", handler.Hello)
 	return http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
 }
 

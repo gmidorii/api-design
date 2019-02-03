@@ -6,7 +6,7 @@ import (
 	"github.com/google/wire"
 
 	"github.com/gmidorii/api-design/wire/app"
-	"github.com/gmidorii/api-design/wire/repository/db"
+	"github.com/gmidorii/api-design/wire/infra/db"
 )
 
 func InitHelloApp() (app.Hello, error) {

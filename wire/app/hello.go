@@ -2,22 +2,23 @@ package app
 
 import (
 	"fmt"
+
+	"github.com/gmidorii/api-design/wire/domain"
 	"github.com/pkg/errors"
-	"github.com/gmidorii/api-design/wire/repository"
 )
 
 type Hello struct {
-	repo repository.User
+	user domain.UserRepository
 }
 
-func NewHello(repo repository.User) Hello {
+func NewHello(user domain.UserRepository) Hello {
 	return Hello{
-		repo: repo,
+		user: user,
 	}
 }
 
 func (h Hello) GetMessage(id string) (string, error) {
-	name, err := h.repo.Get(id)
+	name, err := h.user.Get(id)
 	if err != nil {
 		return "", errors.Wrap(err, "failed get name from repository")
 	}
